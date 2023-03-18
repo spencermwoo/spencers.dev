@@ -1,9 +1,0 @@
-server {
-        listen 80;
-        listen [::]:80;
-
-        root /var/www/test.spencers.dev;
-        server_name test.spencers.dev;
-
-        index index.html;
-}
