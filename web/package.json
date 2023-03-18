@@ -1,10 +1,10 @@
 {
   "name": "spencers.dev",
   "version": "3.1.2",
-  "description": "A starter blog web site using the Eleventy static site generator.",
+  "description": "A personal blog.",
   "scripts": {
-    "prepare": "cd .. && husky install website/.husky",
-    "add-hook": "npx husky add .husky/pre-push 'cd website && npm run transform-images'",
+    "prepare": "cd .. && husky install web/.husky",
+    "add-hook": "npx husky add .husky/pre-push 'cd web && npm run transform-images'",
     "prestart": "npm run clean",
     "prebuild": "npm run clean",
     "clean": "rm -rf _site",
