@@ -1,0 +1,58 @@
+{
+  "name": "spencers.dev",
+  "version": "3.1.2",
+  "description": "A starter blog web site using the Eleventy static site generator.",
+  "scripts": {
+    "prepare": "cd .. && husky install website/.husky",
+    "add-hook": "npx husky add .husky/pre-push 'cd website && npm run transform-images'",
+    "prestart": "npm run clean",
+    "prebuild": "npm run clean",
+    "clean": "rm -rf _site",
+    "build": "npx eleventy",
+    "build:prod": "cross-env ELEVENTY_ENV=prod npm run build",
+    "build:dev": "cross-env ELEVENTY_ENV=development npm run build",
+    "watch": "npx eleventy --watch",
+    "serve": "npx eleventy --serve",
+    "debug": "DEBUG=* npx eleventy",
+    "dev": "npm run serve",
+    "transform-images": "npx gulp -f tasks/gulpfile.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build:prod",
+      "pre-push": "npm run transform-images"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spencermwoo/spencers.dev.git"
+  },
+  "author": {
+    "name": "Spencer Woo",
+    "email": "admin@spencers.dev",
+    "url": "https://spencers.dev/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spencermwoo/spencers.dev/issues"
+  },
+  "homepage": "https://github.com/spencermwoo/spencers.dev#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy-navigation": "^0.1.6",
+    "@11ty/eleventy-plugin-rss": "^1.1.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "cross-env": "^7.0.3",
+    "gulp": "^4.0.2",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "husky": "^8.0.1",
+    "imagemin-webp": "^7.0.0",
+    "luxon": "^1.25.0",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.2.5",
+    "outdent": "^0.8.0",
+    "terser": "^5.13.1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Spencer Woo",
+  "url": "https://spencers.dev/",
+  "description": "nonsense blog",
+  "feed": {
+    "subtitle": "nonsense blog",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://spencers.dev/"
+  },
+  "author": {
+    "name": "Spencer Woo",
+    "email": "admin@spencers.dev"
+  }
+}
