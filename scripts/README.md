@@ -1,5 +1,10 @@
 # scripts
 
+```
+export D_PAT=
+export CF_API_TOKEN=
+```
+
 # deploy
 `./create.sh`
 

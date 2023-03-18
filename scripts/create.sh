@@ -2,23 +2,23 @@
 
 # ======================
 # 0) PREREQUISITES
-# ./_init.sh
+./_init.sh
 
-# # ======================
-# # 1) CREATE PLAN
-# terraform -chdir=terra plan -var "do_token=${D_PAT}" -var "pvt_key=$HOME/.ssh/id_rsa" -input=false -out=tfplan
+# ======================
+# 1) CREATE PLAN
+terraform -chdir=terra plan -var "do_token=${D_PAT}" -var "pvt_key=$HOME/.ssh/id_rsa" -input=false -out=tfplan
 
-# sleep 5
+sleep 5
 
-# echo '
-# 		Creating DO droplet.
-# 		'
+echo '
+		Creating DO droplet.
+		'
 
-# # ======================
-# # 2) APPLY PLAN
-# terraform -chdir=terra apply -input=false tfplan
+# ======================
+# 2) APPLY PLAN
+terraform -chdir=terra apply -input=false tfplan
 
-# sleep 90
+sleep 90
 
 ipv4=$(terraform -chdir=terra output -raw droplet_ipv4_address)
 ipv6=$(terraform -chdir=terra output -raw droplet_ipv6_address)

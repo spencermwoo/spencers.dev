@@ -1,6 +1,12 @@
+# cf
+
 Created as a Jenkins job to automate domain testing and abstracting CF permissions.
 
 Instead of rewriting in shell, we're using it here.
+
+# prerequisite
+
+Set `node` version and create `.env`
 
 # add
 provide IP, domainName, and dnsType

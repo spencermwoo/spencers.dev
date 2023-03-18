@@ -150,31 +150,30 @@ def upload_web(compiled_dir):
     ftp_dir = '/var/www/spencers.dev/html/'
     upload(ftp_dir, f'{compiled_dir}/')
 
-# 6)
+# 7)
 @log
 def upload_nginx(base_dir):
     # nginx
     ftp_dir = '/etc/nginx/sites-available/'
-    nginx_dir = f'{base_dir}/nginx/'
-    upload(ftp_dir, f'{nginx_dir}')
+    nginx_dir = f'{base_dir}/nginx'
+    upload(ftp_dir, f'{nginx_dir}/')
 
-    # sudo ln -s /etc/nginx/sites-available/api.spencers.dev /etc/nginx/sites-enabled/
-    # sudo ln -s /etc/nginx/sites-available/puzzle.spencers.dev /etc/nginx/sites-enabled/
-    # sudo ln -s /etc/nginx/sites-available/spencers.dev /etc/nginx/sites-enabled/
-    # sudo ln -s /etc/nginx/sites-available/test.spencers.dev /etc/nginx/sites-enabled/
+# 8)
+@log
+def upload_puzzle_dirs(base_dir):
+    # ftp_dir = '/var/www/puzzle.spencers.dev/'
+    ftp_dir = '/var/www/'
+    compiled_dir = f'{base_dir}/web_puzzle/puzzle.spencers.dev'
+    upload(ftp_dir, f'{compiled_dir}/')
 
-    # service nginx reload
-    # systemctl restart nginx
+    # ftp_dir = '/var/www/api.spencers.dev/'
+    ftp_dir = '/var/www/'
+    compiled_dir = f'{base_dir}/web_puzzle/api.spencers.dev'
+    upload(ftp_dir, f'{compiled_dir}/')
 
-    # nginx -t
-    # nginx -T | grep "spencers.dev"
-
-    # tail -f /var/log/nginx/access.log
-
-# 7)
+# 9)
 @log
 def upload_webhook_dirs():
-    # webhook
     ftp_dir = '/var/www/'
     # ftp_dir = '/var/www/webhooks/'
     compiled_dir = f'{base_dir}/webhooks'
@@ -185,104 +184,67 @@ def upload_webhook_dirs():
     compiled_dir = f'{base_dir}/supervisord'
     upload(ftp_dir, f'{compiled_dir}/')
 
-# 8)
-@log
-def upload_puzzle_dirs():
-    # puzzle
-    # ftp_dir = '/var/www/puzzle.spencers.dev/'
-    ftp_dir = '/var/www/'
-    compiled_dir = f'{base_dir}/web_puzzle/puzzle.spencers.dev'
-    upload(ftp_dir, f'{compiled_dir}/')
+def upload_spencersdev(base_dir):
+    web_dir = f'{base_dir}/web'
+    web_compiled_dir = f'{web_dir}/_site'
 
-    # api
-    # ftp_dir = '/var/www/api.spencers.dev/'
-    ftp_dir = '/var/www/'
-    compiled_dir = f'{base_dir}/web_puzzle/api.spencers.dev'
-    upload(ftp_dir, f'{compiled_dir}/')
-
-
-def upload_spencersdev(base_dir, web_dir, compiled_dir):
     # 1)
     # setup_node(web_dir)
 
     # # 2)
     # print(f'Clear local compiled site')
-    # clear_local_dir(compiled_dir)
-    # print(f'Delete compiled directory : {compiled_dir}')
+    # clear_local_dir(web_compiled_dir)
+    # print(f'Delete compiled directory : {web_compiled_dir}')
 
     # # 3)
     # print(f'Building site')
     # build_site()
 
-    # 4)
+    # # 4)
     # print(f'Copy static dirs')
     # copy_static_dirs()
 
     # print('Building completed\n==========')
 
-    # 4)
+    # # 5)
     # ftp_dir = '/var/www/spencers.dev/html/'
     # clear_ftp_dir(ftp_dir)
     # print(f'Cleared directory {ftp_dir}')
 
-    # 5)
+    # 6)
     print('==========\nUploading local website to server')
-    upload_web(compiled_dir)
+    upload_web(web_compiled_dir)
     print('==========\nUploading completed')
 
-    # 6)
+    # 7)
     # upload_nginx(base_dir)
     # print('==========\nUploaded NGINX configs')
 
-# def upload_nignx():
-
-
-def upload_puzzle():
-    # ============
-    # Alternatives
-
-    # prerequisite:
-    # directories need to exist already
-        # /var/www/spencers.dev/html
-        # /var/www/api.spencers.dev
-        # /var/www/puzzle.spencers.dev
-        # /var/www/webhooks
-
-        # /var/www/test.spencers.dev
-    
+def upload_puzzle(base_dir):
     # 8)
     # this doesn't run the servers
     print('==========\nUploading puzzle')
-    upload_puzzle_dirs()
+    upload_puzzle_dirs(base_dir)
     print('==========\nUploaded puzzle')
 
     # print('todo : run node servers pm2, logging, metrics')
 
-    # # 7)
-    # # this doesn't run the servers
+    # 9)
     # upload_webhook_dirs()
 
     # print('==========\nUploaded WEBHOOK DIRS')
 
+    # 10)
+    # run servers
     # print('todo : reload nginx, pm2 services, systemd crons')
     # # this should also create a LAST_MODIFIED file with date
     return
 
-# todo:
-# separate action items:
-#   clean
-#   build
-#   upload
 if __name__ == '__main__':
     cwd = os.getcwd()
 
     os.chdir(f'{cwd}/../')
     base_dir = os.getcwd()
 
-    os.chdir(f'{base_dir}/web')
-    web_dir = os.getcwd()
-
-    compiled_dir = f'{base_dir}/web/_site'
-
-    # upload_spencersdev(base_dir, web_dir, compiled_dir);
-    upload_puzzle();
+    upload_spencersdev(base_dir);
+    # upload_puzzle(base_dir);
