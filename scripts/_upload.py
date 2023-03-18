@@ -147,7 +147,7 @@ def clear_ftp_dir(sftp_dir):
 # 6) 
 @log
 def upload_web(compiled_dir):
-    ftp_dir = '/var/www/spencers.dev/html/'
+    ftp_dir = '/var/www/spencers.dev/'
     upload(ftp_dir, f'{compiled_dir}/')
 
 # 7)
@@ -189,27 +189,27 @@ def upload_spencersdev(base_dir):
     web_compiled_dir = f'{web_dir}/_site'
 
     # 1)
-    # setup_node(web_dir)
+    setup_node(web_dir)
 
-    # # 2)
-    # print(f'Clear local compiled site')
-    # clear_local_dir(web_compiled_dir)
-    # print(f'Delete compiled directory : {web_compiled_dir}')
+    # 2)
+    print(f'Clear local compiled site')
+    clear_local_dir(web_compiled_dir)
+    print(f'Delete compiled directory : {web_compiled_dir}')
 
-    # # 3)
-    # print(f'Building site')
-    # build_site()
+    # 3)
+    print(f'Building site')
+    build_site()
 
-    # # 4)
-    # print(f'Copy static dirs')
-    # copy_static_dirs()
+    # 4)
+    print(f'Copy static dirs')
+    copy_static_dirs()
 
-    # print('Building completed\n==========')
+    print('Building completed\n==========')
 
-    # # 5)
-    # ftp_dir = '/var/www/spencers.dev/html/'
-    # clear_ftp_dir(ftp_dir)
-    # print(f'Cleared directory {ftp_dir}')
+    # 5)
+    ftp_dir = '/var/www/spencers.dev/html/'
+    clear_ftp_dir(ftp_dir)
+    print(f'Cleared directory {ftp_dir}')
 
     # 6)
     print('==========\nUploading local website to server')
@@ -217,8 +217,9 @@ def upload_spencersdev(base_dir):
     print('==========\nUploading completed')
 
     # 7)
-    # upload_nginx(base_dir)
-    # print('==========\nUploaded NGINX configs')
+    upload_nginx(base_dir)
+    print('==========\nUploaded NGINX configs')
+    # service nginx reload
 
 def upload_puzzle(base_dir):
     # 8)
