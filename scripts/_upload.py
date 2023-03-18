@@ -105,6 +105,12 @@ def _run_os(cmd):
     else:
         os.system(cmd)
 
+# todo: refactor to fix logging
+def log_f(before, after, f, **args):
+    print(f'==========\n{before}')
+    f(..args)
+    print(f'==========\n{after}')
+
 # 1)
 @log
 def setup_node(local_dir):
@@ -126,7 +132,6 @@ def build_site():
     cmd_build = 'npm run build'
 
     # run_os('rm package-lock.json')
-
     _run_os(cmd_build)
 
 # 4)
@@ -157,32 +162,6 @@ def upload_nginx(base_dir):
     ftp_dir = '/etc/nginx/sites-available/'
     nginx_dir = f'{base_dir}/nginx'
     upload(ftp_dir, f'{nginx_dir}/')
-
-# 8)
-@log
-def upload_puzzle_dirs(base_dir):
-    # ftp_dir = '/var/www/puzzle.spencers.dev/'
-    ftp_dir = '/var/www/'
-    compiled_dir = f'{base_dir}/web_puzzle/puzzle.spencers.dev'
-    upload(ftp_dir, f'{compiled_dir}/')
-
-    # ftp_dir = '/var/www/api.spencers.dev/'
-    ftp_dir = '/var/www/'
-    compiled_dir = f'{base_dir}/web_puzzle/api.spencers.dev'
-    upload(ftp_dir, f'{compiled_dir}/')
-
-# 9)
-@log
-def upload_webhook_dirs():
-    ftp_dir = '/var/www/'
-    # ftp_dir = '/var/www/webhooks/'
-    compiled_dir = f'{base_dir}/webhooks'
-    upload(ftp_dir, f'{compiled_dir}/')
-
-    # supervisord service
-    ftp_dir = '/etc/systemd/system/'
-    compiled_dir = f'{base_dir}/supervisord'
-    upload(ftp_dir, f'{compiled_dir}/')
 
 def upload_spencersdev(base_dir):
     web_dir = f'{base_dir}/web'
@@ -220,17 +199,57 @@ def upload_spencersdev(base_dir):
     upload_nginx(base_dir)
     print('==========\nUploaded NGINX configs')
     # service nginx reload
+    # systemctl restart nginx
+    # sudo ln -s /etc/nginx/sites-available/spencers.dev /etc/nginx/sites-enabled/
+
+# 8)
+@log
+def upload_puzzle_dirs(base_dir):
+    # ftp_dir = '/var/www/puzzle.spencers.dev/'
+    ftp_dir = '/var/www/'
+    compiled_dir = f'{base_dir}/web_puzzle/puzzle.spencers.dev'
+    upload(ftp_dir, f'{compiled_dir}/')
+
+    # ftp_dir = '/var/www/api.spencers.dev/'
+    ftp_dir = '/var/www/'
+    compiled_dir = f'{base_dir}/web_puzzle/api.spencers.dev'
+    upload(ftp_dir, f'{compiled_dir}/')
+
+# 9)
+@log
+def upload_puzzle_nginx(base_dir):
+    # nginx
+    ftp_dir = '/etc/nginx/sites-available/'
+    nginx_dir = f'{base_dir}/web_puzzle/nginx/puzzle'
+    upload(ftp_dir, f'{nginx_dir}/')
+
+# 10)
+@log
+def upload_webhook_dirs():
+    ftp_dir = '/var/www/'
+    # ftp_dir = '/var/www/webhooks/'
+    compiled_dir = f'{base_dir}/webhooks'
+    upload(ftp_dir, f'{compiled_dir}/')
+
+    # supervisord service
+    ftp_dir = '/etc/systemd/system/'
+    compiled_dir = f'{base_dir}/supervisord'
+    upload(ftp_dir, f'{compiled_dir}/')
 
 def upload_puzzle(base_dir):
     # 8)
-    # this doesn't run the servers
     print('==========\nUploading puzzle')
     upload_puzzle_dirs(base_dir)
     print('==========\nUploaded puzzle')
-
     # print('todo : run node servers pm2, logging, metrics')
 
     # 9)
+    upload_puzzle_nginx(base_dir)
+    # sudo ln -s /etc/nginx/sites-available/api.spencers.dev /etc/nginx/sites-enabled/
+    # sudo ln -s /etc/nginx/sites-available/puzzle.spencers.dev /etc/nginx/sites-enabled/
+    # sudo ln -s /etc/nginx/sites-available/test.spencers.dev /etc/nginx/sites-enabled/
+
+    # 10)
     # upload_webhook_dirs()
 
     # print('==========\nUploaded WEBHOOK DIRS')
@@ -248,4 +267,4 @@ if __name__ == '__main__':
     base_dir = os.getcwd()
 
     upload_spencersdev(base_dir);
-    # upload_puzzle(base_dir);
+    upload_puzzle(base_dir);
