@@ -2,7 +2,10 @@ server {
         listen 80;
         listen [::]:80;
 
-        root /var/www/spencers.dev/html;
+        listen 443;
+        listen [::]:443;
+
+        root /var/www/spencers.dev;
         index index.html index.htm index.nginx-debian.html;
 
         server_name spencers.dev;
