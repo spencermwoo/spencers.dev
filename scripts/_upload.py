@@ -108,7 +108,7 @@ def _run_os(cmd):
 # todo: refactor to fix logging
 def log_f(before, after, f, **args):
     print(f'==========\n{before}')
-    f(..args)
+    # f(..args)
     print(f'==========\n{after}')
 
 # 1)
@@ -136,8 +136,8 @@ def build_site():
 
 # 4)
 @log
-def copy_static_dirs():
-    cmd_cp = 'cp -a ../static _site'
+def copy_static_dirs(base_dir):
+    cmd_cp = f'cp -a {base_dir}/static {base_dir}/web/_site'
 
     _run_os(cmd_cp)
 
@@ -181,7 +181,7 @@ def upload_spencersdev(base_dir):
 
     # 4)
     print(f'Copy static dirs')
-    copy_static_dirs()
+    copy_static_dirs(base_dir)
 
     print('Building completed\n==========')
 
