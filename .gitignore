@@ -20,9 +20,6 @@ py*.cfg
 *tfstate*
 tfplan
 
-# puzzle
-web_puzzle
-
 # secrets
 .env
 .cfg
