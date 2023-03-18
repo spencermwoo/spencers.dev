@@ -1,0 +1,33 @@
+_site/
+node_modules/
+package-lock.json
+.lock
+.DS_Store
+
+# *.cfg
+
+# python
+__pycache__/
+.pyc
+bin
+lib
+include
+py*.cfg
+
+# terraform
+.terraform
+.terraform*
+*tfstate*
+tfplan
+
+# puzzle
+web_puzzle
+
+# secrets
+.env
+.cfg
+credentials.json
+token.json
+
+# temp secrets
+webhooks/*
