@@ -1,0 +1,24 @@
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/spencers.dev/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name spencers.dev;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+        location ^~ /.well-known/ {
+                    access_log           off;
+                    log_not_found        off;
+                    autoindex            off;
+                    try_files            $uri $uri/ =404;
+                }
+
+        location = /p {
+                return 301 https://spencers.dev/static/q;
+        }
+}
