@@ -10,7 +10,7 @@ Specifically we're using
 * [Cloudflare](https://www.cloudflare.com/) to manage DNS records
 * [11ty](https://github.com/11ty/eleventy) static site generator
 
-These technological choices we primarily made for fun and learning.
+These technological choices were primarily made for fun and learning.
 
 # folder layout
 
