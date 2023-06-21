@@ -14,7 +14,7 @@ email domains
 
 * view emails via `.eml`
 
-	`for f in *; do mv -- "$f" "${f}.eml"; done`
+	`for f in download/*; do mv -- "$f" "${f}.eml"; done`
 	`rm download/*`
 
 * delete emails from s3 bucket
