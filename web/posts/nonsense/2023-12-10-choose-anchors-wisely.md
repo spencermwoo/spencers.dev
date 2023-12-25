@@ -1,7 +1,0 @@
----
-title: choose your anchors wisely
-description: choose your anchors wisely
-date: 2023-12-10
----
-<body style="margin:0">
-{% docs '2PACX-1vTQIuuYc2JuCjCZDwvvTCv0jzZn30htRfWGtM-1XT_kZJhU3lAxJzauMJmM6AXrT9pNb2fYUT-ly7S7' %}
