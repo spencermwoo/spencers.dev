@@ -6,3 +6,7 @@ webhooks
 supervisord
 secret
 other_pages
+
+Dockerfile
+build-image.sh
+VERSION.txt
