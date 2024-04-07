@@ -39,10 +39,12 @@
   "homepage": "https://github.com/spencermwoo/spencers.dev#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy-cache-assets": "^2.3.0",
     "@11ty/eleventy-navigation": "^0.1.6",
     "@11ty/eleventy-plugin-rss": "^1.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
     "gulp": "^4.0.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^8.0.0",

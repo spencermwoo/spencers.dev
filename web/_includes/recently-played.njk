@@ -1,0 +1,13 @@
+{% set recentlyPlayed = lastfm.recenttracks.track %}
+
+{% if recentlyPlayed.length %}
+<ul class="recently-played">
+  {% for item in recentlyPlayed %}
+    <li class="recently-played__track">
+      <a href="{{ item.url }}" class="track__url">
+      {{ item.artist['#text'] }} - {{ item.name }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
