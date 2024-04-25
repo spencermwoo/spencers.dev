@@ -5,6 +5,13 @@ export D_PAT=
 export CF_API_TOKEN=
 ```
 
+
+```
+py -m venv .venv
+source .venv/bin/activate
+py -m pip install -r requirements.txt
+```
+
 # deploy
 `./create.sh`
 
