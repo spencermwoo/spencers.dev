@@ -21,6 +21,7 @@
 
       gtag('config', '{{ env.tracking.gtag }}');
     </script>
+    <!-- <script type="module" src="https://unpkg.com/dark-mode-toggle"></script> -->
 
     {% include 'base-favicon.partial.njk' %}
   </head>
@@ -32,6 +33,20 @@
         <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
       {%- endfor %}
       </ul>
+      <!-- <aside>
+        <dark-mode-toggle
+          id="dark-mode-toggle-1"
+          legend=""
+          appearance="switch"
+          dark=""
+          light=""
+        ></dark-mode-toggle>
+      </aside>
+      <script>
+        window.addEventListener('colorschemechange', (e) => {
+          document.body.classList.toggle('dark', e.target.mode === 'dark');
+        });
+      </script> -->
     </header>
 
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>

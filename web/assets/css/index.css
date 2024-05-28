@@ -9,6 +9,15 @@
   --white: #fff;
 }
 
+body.dark {
+  background-color: black;
+  color: white;
+}
+
+.dark a {
+  color: lightblue;
+}
+
 @font-face {
     font-family: "Inconsolata";
     font-style: normal;
@@ -243,6 +252,7 @@ ul > li {
   border-radius: 0.25em; /* 3px /12 */
   text-decoration: none;
 }
+
 a[href].tag,
 a[href].tag:visited {
   color: #fff;

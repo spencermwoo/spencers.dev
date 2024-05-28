@@ -56,5 +56,8 @@
     "markdown-it-anchor": "^5.2.5",
     "outdent": "^0.8.0",
     "terser": "^5.13.1"
+  },
+  "dependencies": {
+    "dark-mode-toggle": "^0.15.0"
   }
 }
