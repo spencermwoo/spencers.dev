@@ -11,12 +11,14 @@ const folder = {
 
 const dir = {
   img: `/${folder.assets}/images/`,
+  css: `/${folder.assets}/css/`,
   favicons: `/${folder.assets}/images/favicons/`
 }
 
 const base = {
   site: baseUrl,
   img: `${baseUrl}${dir.img}`,
+  css: `${baseUrl}${dir.css}`,
   favicons: `${baseUrl}${dir.favicons}`
 }
 
