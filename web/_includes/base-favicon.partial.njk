@@ -1,34 +1,7 @@
-<!-- generics: classic -->
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="icon" href="/favicon.ico"
-  sizes="16x16 32x32 48x48 64x64">
-
-{% set icons = [128, 196] %}
-<!-- generics: modern -->
-{% for icon in icons %}
-  <link rel="icon" sizes="{{icon}}x{{icon}}"
-    href="{{ env.base.favicons }}favicon-{{icon}}.png">
-{% endfor %}
-
-<!-- iOS -->
-<link rel="mask-icon" color="{{ env.themeColor }}"
-  href="{{ env.base.favicons }}favicon.svg">
-
-{% set icons = [120, 152, 180] %}
-{% for icon in icons %}
-  <link rel="apple-touch-icon" sizes="{{icon}}x{{icon}}"
-    href="{{ env.base.favicons }}favicon-{{icon}}.png">
-{% endfor %}
-
-<!-- Windows 8 IE 10 -->
-<meta name="msapplication-TileColor"
-  content="{{ env.themeColor }}" />
-<meta name="msapplication-TileImage"
-  content="{{ env.base.favicons }}favicon-144.png" />
-
-<!-- Windows 8.1 + IE11 and above -->
-<meta name="msapplication-config" content="browserconfig.xml" />
-
-<!-- Web App manifest -->
-<link rel="manifest" href="/web.manifest">
-<meta name="theme-color" content="{{ env.themeColor }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ env.base.favicons }}apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ env.base.favicons }}favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ env.base.favicons }}favicon-16x16.png">
+<link rel="manifest" href="{{ env.base.favicons }}site.webmanifest">
+<link rel="mask-icon" href="{{ env.base.favicons }}safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
