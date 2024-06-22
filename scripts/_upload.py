@@ -129,7 +129,7 @@ def clear_local_dir(compiled_dir):
 # 3)
 @log
 def build_site(web_dir):
-    cmd_build = f'cd {web_dir}; npm run build'
+    cmd_build = f'cd {web_dir}; npm run build:prod'
 
     # run_os('rm package-lock.json')
     _run_os(cmd_build)
