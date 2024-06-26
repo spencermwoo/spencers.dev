@@ -32,6 +32,6 @@ module.exports = {
   dir,
   base,
   tracking: {
-    gtag: 'G-CDZ67CKD2Z'
+    gtag: 'G-EX9S5Z1D7J'
   }
 };
