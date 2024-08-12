@@ -21,3 +21,5 @@ else
 
 	python3 _upload.py --server $ipv4 --username root
 fi
+
+# docker
