@@ -13,6 +13,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
 
   eleventyConfig.addShortcode('docs', require('./plugins/google-docs.shortcode'));
+  eleventyConfig.addShortcode('docs2', require('./plugins/google-docs2.shortcode'));
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
