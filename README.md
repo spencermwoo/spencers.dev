@@ -41,15 +41,15 @@ Folder containing files for hosting easter egg puzzle
 # release
 
 ```
-git fetch upstream
+git fetch origin
 git checkout develop
-git pull --rebase upstream develop
-git pull --rebase upstream release
+git pull --rebase origin develop
+git pull --rebase origin release
 git merge develop
 vi RELEASE
 git commit -am "Bump release to x.y.z"
-git tag x.y.z-rc.1
-git push upstream release --tags
+git tag x.y.z
+git push origin release --tags
 
-
+gh release create x.y.z --title "x.y.z" --notes ""
 ```
