@@ -40,6 +40,8 @@ Folder containing files for hosting easter egg puzzle
 
 # release
 
+`./release.sh`
+
 ```
 git fetch origin
 git checkout develop
@@ -48,8 +50,8 @@ git pull --rebase origin release
 git merge develop
 vi RELEASE
 git commit -am "Bump release to x.y.z"
-git tag x.y.z
+git tag x.y.z-rc1
 git push origin release --tags
 
-gh release create x.y.z --title "x.y.z" --notes ""
+gh release create x.y.z  --title "vx.y.z" --notes ""
 ```
