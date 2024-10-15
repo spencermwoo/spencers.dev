@@ -37,3 +37,19 @@ Source files for website content
 
 ### [web_puzzle](https://github.com/spencermwoo/spencers.dev/tree/main/web_puzzle)
 Folder containing files for hosting easter egg puzzle
+
+# release
+
+```
+git fetch upstream
+git checkout develop
+git pull --rebase upstream develop
+git pull --rebase upstream release
+git merge develop
+vi RELEASE
+git commit -am "Bump release to x.y.z"
+git tag x.y.z-rc.1
+git push upstream release --tags
+
+
+```
