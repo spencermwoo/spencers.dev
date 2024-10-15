@@ -33,12 +33,19 @@ Scripts used to destroy or regenerate the hosted website
 Static websites to be hosted without compilation
 
 ### [web](https://github.com/spencermwoo/spencers.dev/tree/main/web)
-Source files for website content
+Source files for 11ty website
 
 ### [web_puzzle](https://github.com/spencermwoo/spencers.dev/tree/main/web_puzzle)
 Folder containing files for hosting easter egg puzzle
 
 # release
+
+```
+brew install gh
+gh auth login
+
+./release.sh
+```
 
 ```
 git fetch origin
@@ -48,8 +55,8 @@ git pull --rebase origin release
 git merge develop
 vi RELEASE
 git commit -am "Bump release to x.y.z"
-git tag x.y.z
+git tag x.y.z-rc1
 git push origin release --tags
 
-gh release create x.y.z --title "x.y.z" --notes ""
+gh release create x.y.z  --title "vx.y.z" --notes ""
 ```
