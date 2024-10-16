@@ -10,6 +10,12 @@ export CF_API_TOKEN=
 py -m venv .venv
 source .venv/bin/activate
 py -m pip install -r requirements.txt
+
+py -V
+Python 3.12.4
+
+pip -V
+pip 24.1.1
 ```
 
 # deploy
